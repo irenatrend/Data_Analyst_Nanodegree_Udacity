@@ -1,0 +1,2 @@
+,avg(cast (mintempi as integer))
+0,61.25
