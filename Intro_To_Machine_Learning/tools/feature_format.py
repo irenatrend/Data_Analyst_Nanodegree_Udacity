@@ -33,7 +33,9 @@
 
 import numpy as np
 
-def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True, remove_any_zeroes=False ):
+
+def featureFormat(dictionary, features, remove_NaN=True, remove_all_zeroes=True, remove_any_zeroes=False):
+
     """ convert dictionary to numpy array of features
         remove_NaN=True will convert "NaN" string to 0.0
         remove_all_zeroes=True will omit any data points for which
@@ -41,12 +43,11 @@ def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True
         remove_any_zeroes=True will omit any data points for which
             any of the features you seek are 0.0
     """
-
-
     return_list = []
 
     for key in dictionary.keys():
         tmp_list = []
+
         append = False
         for feature in features:
             try:
@@ -55,33 +56,33 @@ def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True
                 print "error: key ", feature, " not present"
                 return
             value = dictionary[key][feature]
-            if value=="NaN" and remove_NaN:
+            if value == "NaN" and remove_NaN:
                 value = 0
-            tmp_list.append( float(value) )
+            tmp_list.append(float(value))
 
-        ### if all features are zero and you want to remove
-        ### data points that are all zero, do that here
+        # if all features are zero and you want to remove
+        # data points that are all zero, do that here
         if remove_all_zeroes:
             all_zeroes = True
             for item in tmp_list:
                 if item != 0 and item != "NaN":
                     append = True
 
-        ### if any features for a given data point are zero
-        ### and you want to remove data points with any zeroes,
-        ### handle that here
+        # if any features for a given data point are zero
+        # and you want to remove data points with any zeroes,
+        # handle that here
         if remove_any_zeroes:
             any_zeroes = False
             if 0 in tmp_list or "NaN" in tmp_list:
                 append = False
         if append:
-            return_list.append( np.array(tmp_list) )
+            return_list.append(np.array(tmp_list))
 
 
     return np.array(return_list)
 
 
-def targetFeatureSplit( data ):
+def targetFeatureSplit(data):
     """ 
         given a numpy array like the one returned from
         featureFormat, separate out the first feature
@@ -96,9 +97,10 @@ def targetFeatureSplit( data ):
 
     target = []
     features = []
+
     for item in data:
-        target.append( item[0] )
-        features.append( item[1:] )
+        target.append(item[0])
+        features.append(item[1:])
 
     return target, features
 

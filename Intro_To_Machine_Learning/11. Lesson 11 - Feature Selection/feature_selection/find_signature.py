@@ -42,8 +42,8 @@ print "Accuracy:", clf.score(features_test, labels_test)
 
 
 # What is the importance of the most important feature? What is the number of this feature?
-importances = clf.feature_importances_
 import numpy as np
+importances = clf.feature_importances_
 indices = np.argsort(importances)[::-1]
 print 'Feature Ranking: '
 for i in range(10):

@@ -31,6 +31,5 @@ def outlierCleaner(predictions, ages, net_worths):
     # Extract Best Points
     cleaned_data = cleaned_data[0:80]
 
-    
     return cleaned_data
 

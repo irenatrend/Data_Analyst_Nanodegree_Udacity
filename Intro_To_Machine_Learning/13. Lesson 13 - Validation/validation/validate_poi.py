@@ -49,5 +49,3 @@ print "Accuracy 2:", clf2.score(X_test, y_test)
 
 # And the testing data brings us back down to earth
 # after that 99% accuracy in the last quiz.
-
-

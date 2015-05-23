@@ -13,9 +13,6 @@ The dataset used in this example is a preprocessed excerpt of the
   original source: http://scikit-learn.org/stable/auto_examples/applications/face_recognition.html
 
 """
-
-
-
 print __doc__
 
 from time import time
@@ -59,13 +56,11 @@ print "n_samples: %d" % n_samples
 print "n_features: %d" % n_features
 print "n_classes: %d" % n_classes
 
-
 ###############################################################################
 # Split into a training set and a test set using a stratified k fold
 
 # split into a training and testing set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
-
 
 ###############################################################################
 # Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled
@@ -91,10 +86,8 @@ print "done in %0.3fs" % (time() - t0)
 
 print "Fitting the classifier to the training set"
 t0 = time()
-param_grid = {
-         'C': [1e3, 5e3, 1e4, 5e4, 1e5],
-          'gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1],
-          }
+param_grid = {'C': [1e3, 5e3, 1e4, 5e4, 1e5], 'gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1],}
+
 clf = GridSearchCV(SVC(kernel='rbf', class_weight='auto'), param_grid)
 clf = clf.fit(X_train_pca, y_train)
 print "done in %0.3fs" % (time() - t0)

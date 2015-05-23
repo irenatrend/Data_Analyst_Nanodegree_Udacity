@@ -8,7 +8,7 @@ from ages_net_worths import ageNetWorthData
 
 ages_train, ages_test, net_worths_train, net_worths_test = ageNetWorthData()
 
-reg.fit(age_train, net_worths_train)
+reg.fit(ages_train, net_worths_train)
 
 
 print "katie's net worth prediction: ", reg.predict([27])
