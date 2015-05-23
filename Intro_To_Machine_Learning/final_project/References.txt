@@ -1,0 +1,16 @@
+http://en.wikipedia.org/wiki/Enron_scandal
+http://scikit-learn.org/stable/supervised_learning.html#supervised-learning
+https://docs.python.org/2/library/pickle.html
+http://scikit-learn.org/stable/modules/tree.html
+http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html
+http://scikit-learn.sourceforge.net/dev/modules/generated/sklearn.ensemble.AdaBoostClassifier.html
+http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
+http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html
+http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
+http://scikit-learn.org/stable/modules/svm.html
+http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC
+http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
+http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html
+http://en.wikipedia.org/wiki/Precision_and_recall
+
