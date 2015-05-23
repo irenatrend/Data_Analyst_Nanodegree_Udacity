@@ -8,10 +8,8 @@ sys.path.append("../tools/")
 from feature_format import featureFormat
 from feature_format import targetFeatureSplit
 
-from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.decomposition import RandomizedPCA
 from sklearn.pipeline import Pipeline
 
