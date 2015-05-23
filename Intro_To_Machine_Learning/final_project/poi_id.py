@@ -11,6 +11,7 @@ from feature_format import targetFeatureSplit
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.decomposition import RandomizedPCA
 from sklearn.pipeline import Pipeline
 
@@ -31,7 +32,7 @@ financial_features_list = [
     'loan_advances', 'long_term_incentive', 'other', 'restricted_stock', 'restricted_stock_deferred',
     'salary', 'total_payments', 'total_stock_value']
 
-features_list = [target_label] + financial_features_list + email_features_list
+features_list = ['poi'] + financial_features_list + email_features_list
 
 # load the dictionary containing the dataset
 data_dict = pickle.load(open("final_project_dataset.pkl", "r"))
@@ -42,7 +43,7 @@ data_dict = pickle.load(open("final_project_dataset.pkl", "r"))
 data_dict.pop('TOTAL', 0)
 # helper.plot_salary_bonus(data_dict)
 
-# Step 3: Create new features
+# Step 3: Create new features and select final feature list (feature_list)
 # store to my_dataset for easy export below
 my_dataset = data_dict
 
@@ -58,8 +59,9 @@ for name in my_dataset:
 # Get K-best features
 num_features = 10
 k_best_features = helper.get_kbest(data_dict, features_list, num_features)
-# features_list = [target_label] + k_best_features.keys()
-features_list = ['poi', 'bonus', 'total_stock_value']
+# features_list = ['poi'] + k_best_features.keys()
+
+features_list = ['poi'] + ['exercised_stock_options', 'total_stock_value', 'bonus', 'salary']
 
 # Get features importance
 # helper.get_features_ranking(data_dict, features_list)
@@ -73,8 +75,7 @@ data = featureFormat(my_dataset, features_list)
 # be first in features_list
 labels, features = targetFeatureSplit(data)
 
-# Task 4: Try a different classifiers, and choose one final
-
+# Step 4: Try a different classifiers, and choose one final
 scaler = StandardScaler()
 pca = RandomizedPCA(n_components=2, copy=True, whiten=False)
 clf = DecisionTreeClassifier(min_samples_split=2, random_state=10)
@@ -83,13 +84,14 @@ estimator = [('scaler', scaler), ('reduce_dim', pca), ('tree', clf)]
 
 clf = Pipeline(estimator)
 
+
 # RandomForestClassifier
 # from sklearn import ensemble
 # clf = ensemble.RandomForestClassifier(criterion='gini', n_estimators=14, max_depth=7,
-#                                       max_features=None, random_state=42, min_samples_split=1)
+#                                      max_features=None, random_state=42, min_samples_split=1)
 
 
-# Task 5: Tune classifier to achieve better than .3 precision and recall
+# Step 5: Tune classifier using GridSearchCV
 # from sklearn.grid_search import GridSearchCV
 # params = dict(reduce_dim__n_components=[1, 2, 3], tree__min_samples_split=[2, 4, 6, 8 10])
 # clf = GridSearchCV(clf, param_grid=params, n_jobs=-1, scoring='recall')
@@ -100,6 +102,3 @@ clf = Pipeline(estimator)
 pickle.dump(clf, open("my_classifier.pkl", "w"))
 pickle.dump(data_dict, open("my_dataset.pkl", "w"))
 pickle.dump(features_list, open("my_feature_list.pkl", "w"))
-
-
-
