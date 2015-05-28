@@ -62,7 +62,7 @@ def get_kbest(data_dict, features_list, k):
     # print sorted_results
     k_best_features = dict(sorted_results[:k])
 
-    # print "{0} best features: {1}\n".format(k, k_best_features.keys())
+    print "{0} best features: {1}\n".format(k, k_best_features.keys())
     return k_best_features
 
 

@@ -3,10 +3,10 @@ S'poi'
 p1
 aS'exercised_stock_options'
 p2
-aS'total_stock_value'
+aS'expenses'
 p3
-aS'bonus'
+aS'emails_fraction_to_poi'
 p4
-aS'salary'
+aS'shared_receipt_with_poi'
 p5
 a.
