@@ -39,7 +39,7 @@ data_dict.pop('TOTAL', 0)
 data_dict.pop('THE TRAVEL AGENCY IN THE PARK', 0)
 # helper.plot_salary_bonus(data_dict)
 
-# Step 3: Create new feature(s)
+# Step 3: Create new feature(s) and select final features list
 
 # Get features importance before adding new features
 # print "\nFeatures importance before adding new features"
@@ -56,13 +56,9 @@ for name in data_dict:
 
 
 # print "\nFeatures importance after adding new features"
-features_list = features_list + ['emails_fraction_from_poi', 'emails_fraction_to_poi']
+# features_list = features_list + ['emails_fraction_from_poi', 'emails_fraction_to_poi']
 # helper.get_features_ranking(data_dict, features_list)
 # print
-
-# features_list = ['poi', 'exercised_stock_options', 'other', 'expenses', 'emails_fraction_to_poi',
-#                 'shared_receipt_with_poi', 'long_term_incentive', 'bonus', 'restricted_stock', 'total_stock_value']
-
 
 features_list = ['poi', 'exercised_stock_options', 'expenses', 'emails_fraction_to_poi',
                  'shared_receipt_with_poi']
